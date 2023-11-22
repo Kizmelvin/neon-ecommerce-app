@@ -2,8 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
-
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -16,4 +14,193 @@
     --background-start-rgb: 0, 0, 0;
     --background-end-rgb: 0, 0, 0;
   }
+}
+
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+body,
+#root {
+  margin: 0;
+  height: 100vh;
+}
+body,
+input,
+select,
+button,
+textarea {
+  font-size: 1.6rem;
+  font-family: Montserrat, Arial, Helvetica, sans-serif;
+}
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    "header"
+    "main"
+    "footer";
+  grid-template-rows: 5rem 1fr 5rem;
+  grid-template-columns: 1fr;
+  height: 100%;
+}
+a {
+  text-decoration: none;
+}
+a:hover {
+  color: #ff8000;
+  list-style-type: none;
+}
+header {
+  grid-area: header;
+  background-color: #203040;
+  color: white;
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+}
+
+header a {
+  color: white;
+  text-decoration: none;
+}
+main {
+  grid-area: main;
+}
+footer {
+  grid-area: footer;
+  background-color: #203040;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.content {
+  display: flex;
+  flex-wrap: wrap;
+}
+.main {
+  flex: 3 60rem;
+}
+.sidebar {
+  flex: 1 20rem;
+}
+.products {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  margin: 0;
+  list-style-type: none;
+}
+
+.products li {
+  flex: -1 1 29rem;
+  height: 40rem;
+  padding: 1rem;
+  border: 1px solid gray;
+}
+.product {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+.product img {
+  max-width: 37rem;
+  max-height: 37rem;
+}
+.product-price {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.product-price div,
+.product-price button {
+  text-align: center;
+  flex: 1;
+}
+.product-price div {
+  font-size: 2.5rem;
+}
+.product-price button {
+  padding: 1rem;
+  border: 0.1rem #c0c0c0 solid;
+  cursor: pointer;
+}
+.product-price button:hover {
+  border: 0.1rem #808080 solid;
+}
+.button-primary {
+  background-color: #f0c040;
+}
+.filter {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  margin: 1rem;
+  border-bottom: 0.1rem #c0c0c0 solid;
+}
+.filter div {
+  flex: 1;
+}
+/* Index.css */
+.cart {
+  padding: 1rem;
+  margin: 1rem;
+  display: flex;
+}
+.cart-header {
+  border-bottom: 0.1rem #c0c0c0 solid;
+}
+.cart-items {
+  padding: 0;
+  width: 100%;
+  list-style-type: none;
+}
+.cart-items img {
+  width: 5rem;
+}
+.cart-items li {
+  display: flex;
+}
+.cart-items li div {
+  padding: 0.5rem;
+}
+.cart-items li div:last-child {
+  flex: 1;
+}
+.right {
+  text-align: right;
+}
+.cart-footer {
+  padding: 1rem;
+  text-align: center;
+}
+.footer-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1.5rem;
+  padding: 1rem;
+  width: 100%;
+  /* font-size: 2.5rem; */
+}
+/* Checkout */
+form {
+  width: 100%;
+}
+.form-container {
+  padding: 0;
+  width: 100%;
+  list-style-type: none;
+}
+.form-container li {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+input {
+  padding: 1rem;
+  border: 0.1rem #c0c0c0 solid;
 }
