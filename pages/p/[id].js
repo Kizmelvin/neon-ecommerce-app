@@ -34,7 +34,7 @@ async function deleteProduct(id) {
   }
 }
 
-const handleProducts = (props) => {
+function HandleProducts(props) {
   const [isVisible, setIsVisible] = useState(false);
   const [productName, setProductName] = useState("");
   const [productPrice, setProductPrice] = useState("");
@@ -135,6 +135,6 @@ const handleProducts = (props) => {
       </div>
     </Layout>
   );
-};
+}
 
-export default handleProducts;
+export default HandleProducts;
