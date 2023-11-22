@@ -97,6 +97,7 @@ function ProductForm({
 
               <button
                 onClick={handleCancel}
+                type="button"
                 class="bg-transparent p-3 hover:bg-gray-500 text-gray-700 font-semibold hover:text-white py-2 px-4 border border-gray-500 hover:border-transparent rounded"
               >
                 Cancel
