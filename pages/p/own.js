@@ -8,7 +8,7 @@ export const getServerSideProps = async ({ req, res }) => {
   const session = await getSession({ req });
   if (!session) {
     res.statusCode = 403;
-    return { props: { ownTodos: [] } };
+    return { props: { ownProducts: [] } };
   }
 
   const ownProducts = await prisma.product.findMany({
