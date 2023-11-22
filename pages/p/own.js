@@ -26,13 +26,13 @@ export const getServerSideProps = async ({ req, res }) => {
   };
 };
 
-const UserTodos = (props) => {
+function Userproducts(props) {
   const { data: session } = useSession();
 
   if (!session) {
     return (
       <Layout>
-        <h1>My Drafts</h1>
+        <h1>Personal products</h1>
         <div>You need to be authenticated to view this page.</div>
       </Layout>
     );
@@ -49,6 +49,6 @@ const UserTodos = (props) => {
       </div>
     </Layout>
   );
-};
+}
 
-export default UserTodos;
+export default Userproducts;
