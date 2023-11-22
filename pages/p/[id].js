@@ -78,7 +78,9 @@ const handleProducts = (props) => {
     <Layout>
       <div>
         <div>
-          <Product product={props} />
+          <div className="max-w-4xl ">
+            <Product product={props} />
+          </div>
 
           {userHasValidSession &&
             postBelongsToUser &&
