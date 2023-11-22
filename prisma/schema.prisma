@@ -1,0 +1,50 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL") // uses connection pooling
+  directUrl = env("DIRECT_URL") // uses a direct connection
+}
+model Todo {
+  id       String  @id @default(cuid())
+  content  String?
+  active   Boolean @default(true)
+  author   User?   @relation(fields: [authorId], references: [id])
+  authorId String?
+}
+
+model User {
+  id        String   @id @default(cuid())
+  name      String?
+  email     String?  @unique
+  title     String   @default("Unknown")
+  company   String   @default("Unknown")
+  createdAt DateTime @default(now()) @map(name: "created_at")
+  updatedAt DateTime @updatedAt @map(name: "updated_at")
+  todos     Todo[]
+
+  @@map(name: "users")
+}
+
+model Product {
+  id           String   @id @default(cuid())
+  name         String?
+  image        String?
+  price        String?
+  publish      Boolean  @default(true)
+  productOwner Owner?   @relation(fields: [ownerId], references: [id])
+  ownerId      String?
+}
+
+model Owner {
+  id        String    @id @default(cuid())
+  name      String?
+  email     String?   @unique
+  createdAt DateTime  @default(now()) @map(name: "created_at")
+  updatedAt DateTime  @updatedAt @map(name: "updated_at")
+  products  Product[]
+
+  @@map(name: "owners")
+}
