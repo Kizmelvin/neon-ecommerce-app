@@ -1,16 +1,18 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useSession, getSession } from "next-auth/react";
 import Layout from "@/components/Layout";
 import Product from "@/components/Product";
 import prisma from "@/lib/prisma";
+import { authOptions } from "../api/auth/[...nextauth]";
+import { getServerSession } from "next-auth";
+import Link from "next/link";
 
-export const getServerSideProps = async ({ req, res }) => {
-  const session = await getSession({ req });
-  // if (!session) {
-  //   res.statusCode = 403;
-  //   return { props: { ownProducts: [] } };
-  // }
-
+export const getServerSideProps = async (context) => {
+  const session = await getServerSession(context.req, context.res, authOptions);
+  if (!session) {
+    res.statusCode = 403;
+    return { props: { ownProducts: [] } };
+  }
   const ownProducts = await prisma.product.findMany({
     where: {
       productOwner: { email: session.user.email },
@@ -26,17 +28,19 @@ export const getServerSideProps = async ({ req, res }) => {
   };
 };
 
-function Userproducts(props) {
-  // const { data: session } = useSession();
-
-  // if (!session) {
-  //   return (
-  //     <Layout>
-  //       <h1>Personal products</h1>
-  //       <div>You need to be authenticated to view this page.</div>
-  //     </Layout>
-  //   );
-  // }
+export default function Userproducts(props) {
+  if (!props.ownProducts) {
+    return (
+      <Layout>
+        <h1>You have no product yet</h1>
+        <Link legacyBehavior href="/p/create">
+          <button className="shadow bg-green-500 hover:bg-green-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded">
+            Create product
+          </button>
+        </Link>
+      </Layout>
+    );
+  }
 
   return (
     <Layout>
@@ -50,5 +54,3 @@ function Userproducts(props) {
     </Layout>
   );
 }
-
-export default Userproducts;
