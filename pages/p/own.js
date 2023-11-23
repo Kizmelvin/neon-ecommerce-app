@@ -6,10 +6,10 @@ import prisma from "@/lib/prisma";
 
 export const getServerSideProps = async ({ req, res }) => {
   const session = await getSession({ req });
-  if (!session) {
-    res.statusCode = 403;
-    return { props: { ownProducts: [] } };
-  }
+  // if (!session) {
+  //   res.statusCode = 403;
+  //   return { props: { ownProducts: [] } };
+  // }
 
   const ownProducts = await prisma.product.findMany({
     where: {
@@ -27,16 +27,16 @@ export const getServerSideProps = async ({ req, res }) => {
 };
 
 function Userproducts(props) {
-  const { data: session } = useSession();
+  // const { data: session } = useSession();
 
-  if (!session) {
-    return (
-      <Layout>
-        <h1>Personal products</h1>
-        <div>You need to be authenticated to view this page.</div>
-      </Layout>
-    );
-  }
+  // if (!session) {
+  //   return (
+  //     <Layout>
+  //       <h1>Personal products</h1>
+  //       <div>You need to be authenticated to view this page.</div>
+  //     </Layout>
+  //   );
+  // }
 
   return (
     <Layout>
