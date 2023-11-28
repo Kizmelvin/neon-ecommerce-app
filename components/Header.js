@@ -7,8 +7,9 @@ const Header = () => {
   const router = useRouter();
   const isActive = (pathname) => router.pathname === pathname;
 
-  const { data: session, status } = useSession();
+  const { data: session } = useSession();
 
+  // When there is NO User
   let left = (
     <div className="left">
       <Link legacyBehavior href="/">
@@ -70,7 +71,7 @@ const Header = () => {
       </div>
     );
   }
-
+  // When there is A User
   if (session) {
     left = (
       <div className="left">
@@ -106,9 +107,7 @@ const Header = () => {
     );
     right = (
       <div className="right">
-        <p>
-          {session.user.name} ({session.user.email})
-        </p>
+        <p>{session.user.name}</p>
         <Link legacyBehavior href="/p/create">
           <button>
             <a>New Product</a>

@@ -3,9 +3,6 @@ import Router from "next/router";
 import Image from "next/image";
 
 function Product({ product }) {
-  // const formatCurrency = (num) => {
-  //   return "#" + Number.parseFloat(num).toFixed();
-  // };
   return (
     <div onClick={() => Router.push(`/p/${product.id}`)}>
       <div className="max-w-1xl mt-5 rounded overflow-hidden shadow-lg">

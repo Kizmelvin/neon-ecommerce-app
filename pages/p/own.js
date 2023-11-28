@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { useSession, getSession } from "next-auth/react";
+import React from "react";
 import Layout from "@/components/Layout";
 import Product from "@/components/Product";
 import prisma from "@/lib/prisma";
@@ -29,7 +28,7 @@ export const getServerSideProps = async (context) => {
 };
 
 export default function Userproducts(props) {
-  if (!props.ownProducts) {
+  if (!props.ownProducts.length) {
     return (
       <Layout>
         <h1>You have no product yet</h1>

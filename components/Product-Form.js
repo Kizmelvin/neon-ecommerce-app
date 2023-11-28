@@ -51,7 +51,7 @@ function ProductForm({
                 type="text"
                 value={productPrice}
                 onChange={(e) => setProductPrice(e.target.value)}
-                placeholder="Amount"
+                placeholder={productPrice ? `${productPrice}` : "Amount"}
                 required
               />
             </div>

@@ -15,8 +15,6 @@ export default async function handleUpdate(req, res) {
     });
     res.json(product);
   } else {
-    throw new Error(
-      `The HTTP ${req.method} method is not supported at this route.`
-    );
+    throw new Error(`Updating product with ID: ${productId} was not sucessful`);
   }
 }
