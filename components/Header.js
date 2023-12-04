@@ -45,7 +45,7 @@ const Header = () => {
     right = (
       <div className="right">
         <Link legacyBehavior href="/api/auth/signin">
-          <a data-active={isActive("/signup")}>Log in</a>
+          <a>Log in</a>
         </Link>
         <style jsx>{`
           a {
@@ -113,11 +113,9 @@ const Header = () => {
             <a>New Product</a>
           </button>
         </Link>
-        <Link legacyBehavior href="/">
-          <button onClick={() => signOut()}>
-            <a>Log out</a>
-          </button>
-        </Link>
+        <button onClick={() => signOut({ callbackUrl: "/" })}>
+          <a>Log out</a>
+        </button>
         <style jsx>{`
           a {
             text-decoration: none;
