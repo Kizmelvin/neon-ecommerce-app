@@ -45,7 +45,7 @@ function HandleProducts(props) {
 
   const { data: session, status } = useSession();
   if (status === "loading") {
-    return <div>Authenticating ...</div>;
+    return <div>Updating ...</div>;
   }
   const userHasValidSession = Boolean(session);
   const postBelongsToUser = session?.user?.email === props.productOwner?.email;
