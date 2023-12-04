@@ -113,9 +113,11 @@ const Header = () => {
             <a>New Product</a>
           </button>
         </Link>
-        <button onClick={() => signOut()}>
-          <a>Log out</a>
-        </button>
+        <Link legacyBehavior href="/">
+          <button onClick={() => signOut()}>
+            <a>Log out</a>
+          </button>
+        </Link>
         <style jsx>{`
           a {
             text-decoration: none;
