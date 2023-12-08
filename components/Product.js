@@ -6,7 +6,7 @@ function Product({ product }) {
   return (
     <div onClick={() => Router.push(`/p/${product.id}`)}>
       <div className="max-w-1xl mt-5 rounded overflow-hidden shadow-lg">
-        <Image
+        <img
           width={500}
           height={500}
           className="w-full"
